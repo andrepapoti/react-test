@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import './App.css';
+import { MyTimer } from './components/Timer';
+import { usePrevious } from './hooks/usePrevious';
+import MyButton from './components/MyButton';
+import { useMyCallback } from './hooks/useMyCallback';
 
 function App() {
+  const [showTime, setShowTime] = useState(true);
+  const previousShowTime = usePrevious(showTime);
+  const btnContent = useMemo(() => <>show time</>, []);
+
+  const changeShowTime = useMyCallback(() => {
+    setShowTime((prevValue) => !prevValue);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {String(showTime)} / {String(previousShowTime)}
+      <br />
+      <MyButton onClick={changeShowTime}>{btnContent}</MyButton>
+      {showTime && <MyTimer />}
     </div>
   );
 }
