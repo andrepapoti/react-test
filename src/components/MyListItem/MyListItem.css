@@ -1,0 +1,15 @@
+.icon {
+  text-align: center;
+}
+
+td.item {
+  border-width: 0px 1px;
+  border-style: solid;
+  border-color: #000;
+}
+
+tr:last-child {
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #000;
+}
