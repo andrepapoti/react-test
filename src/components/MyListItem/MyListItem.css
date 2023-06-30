@@ -1,11 +1,46 @@
+button {
+  all: unset;
+}
+
 .icon {
   text-align: center;
+  width: 100%;
 }
 
 td.item {
   border-width: 0px 1px;
   border-style: solid;
   border-color: #000;
+}
+
+td.item .button-div {
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+}
+
+td.item .button-div button {
+  flex-basis: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 0;
+  box-sizing: content-box;
+  text-overflow: hidden;
+  background-color: gainsboro;
+  overflow: hidden;
+}
+
+td.item .button-div div {
+  flex-shrink: 1;
+  flex-grow: 0;
+  min-width: 0;
+}
+
+tr {
+  cursor: pointer;
+  user-select: none;
 }
 
 tr:last-child {
