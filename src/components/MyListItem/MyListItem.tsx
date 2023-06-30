@@ -1,13 +1,24 @@
 import { User } from 'models/user';
 import './MyListItem.css';
+import { MouseEvent, memo, useCallback, useRef } from 'react';
 
 interface MyListProps {
   user: User;
+  setUserActivity: (name: string, isActive: boolean) => void;
 }
 
-export function MyListItem(props: MyListProps): JSX.Element {
+function MyListItem(props: MyListProps): JSX.Element {
   const { isActive, name, age, organization } = props.user;
+  const { setUserActivity } = props;
   const className = `item`;
+
+  const setActive = useCallback(() => {
+    setUserActivity(name, true);
+  }, [setUserActivity, name]);
+
+  const setDisabled = useCallback(() => {
+    setUserActivity(name, false);
+  }, [setUserActivity, name]);
 
   return (
     <tr>
@@ -20,3 +31,5 @@ export function MyListItem(props: MyListProps): JSX.Element {
     </tr>
   );
 }
+
+export default memo(MyListItem);
