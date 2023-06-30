@@ -1,0 +1,9 @@
+td.header {
+  width: 100px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+}
